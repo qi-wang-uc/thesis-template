@@ -1,0 +1,86 @@
+\documentclass[12pt, twoside]{report}
+
+\usepackage[margin=1.0in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage{times}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Figures setup
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{caption}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Reference setup
+\usepackage{xr}
+\usepackage[colorlinks=true, citecolor=blue, linkcolor=blue]{hyperref}
+\usepackage[sort&compress,numbers]{natbib}
+\usepackage{cleveref}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Headers and footers
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyfoot{}
+\fancyhf{}
+\fancyhead[LE,RO]{\bfseries\thepage} % Page number
+\renewcommand{\chaptermark}[1]{\markboth{\MakeUppercase{\thechapter.\ #1}}{}} % Shorter  chapter mark
+\fancyhead[RE]{\nouppercase{\leftmark}}  % Chapter in the right on even pages
+\fancyhead[LO]{\nouppercase{\rightmark}} % Section in the left on odd pages
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Other setup
+\usepackage{lipsum}
+\usepackage{acronym}
+\usepackage{longtable}
+\usepackage{amsfonts}
+\newcommand{\angstrom}{\mbox{\normalfont\AA}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Spacing and indentation
+\usepackage{setspace}
+\doublespacing
+
+\begin{document}
+\pagenumbering{roman}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Title
+\input{misc/titlepage}
+\newpage\null\thispagestyle{empty}\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Abstract
+\input{misc/abstract}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Dedication
+\input{misc/dedication}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Acknoledgments
+\input{misc/acknowledgment}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Lisf of figures, tables, abbreviations, and contents
+\tableofcontents
+\addtocontents{lof}{\protect\addcontentsline{toc}{chapter}{\listfigurename}}
+\listoffigures
+\listoftables
+\addcontentsline{toc}{chapter}{\listtablename}
+\input{misc/abbreviation}
+\addcontentsline{toc}{chapter}{List of Abbreviations}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ch1. Introduction
+\chapter{Introduction}
+\pagenumbering{arabic}
+\input{chapters/chapter1intro}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ch2. Project A
+\chapter{Logo of CHARMM}
+\input{chapters/chapter2charmm}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ch3. Project B
+\chapter{Logo of LAMMPS}
+\input{chapters/chapter3lammps}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ch4. Project C
+\chapter{Logo of NAMD}
+\input{chapters/chapter4namd}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ch5. Conclusion
+\chapter{Conclusions}
+\input{chapters/chapter5conclusions}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Bibliography
+\bibliography{misc/reference}{}
+\bibliographystyle{plain}
+
+\end{document}
