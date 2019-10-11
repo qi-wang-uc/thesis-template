@@ -34,3 +34,7 @@ thesis-template
 │   └── titlepage.tex
 └── thesis.tex
 ```
+
+TODO:
+- [ ] fix minor bugs when compiling.
+- [ ] add all details once thesis submitted.
