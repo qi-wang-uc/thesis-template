@@ -30,7 +30,7 @@ thesis-template
 │   ├── abstract.tex
 │   ├── acknowledgment.tex
 │   ├── dedication.tex
-│   ├── reference.bib
+│   ├── bibliography.bib
 │   └── titlepage.tex
 └── thesis.tex
 ```
