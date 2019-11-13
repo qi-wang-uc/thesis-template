@@ -1,8 +1,11 @@
-\documentclass[12pt, twoside]{report}
-
-\usepackage[margin=1.0in]{geometry}
+\documentclass[12pt, twoside]{book}
+\usepackage{lipsum}
+%-------------------------------------------------------------------------------------------
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Geometry and font
 \usepackage[utf8]{inputenc}
 \usepackage{times}
+\usepackage[margin=1.0in]{geometry}
+%\geometry{bindingoffset=1cm} %% disable this until final submission
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Figures setup
 \usepackage{graphicx}
@@ -15,52 +18,64 @@
 \usepackage[sort&compress,numbers]{natbib}
 \usepackage{cleveref}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Headers and footers
-\usepackage{fancyhdr}
-\pagestyle{fancy}
-\fancyfoot{}
-\fancyhf{}
-\fancyhead[LE,RO]{\bfseries\thepage} % Page number
-\renewcommand{\chaptermark}[1]{\markboth{\MakeUppercase{\thechapter.\ #1}}{}} % Shorter  chapter mark
-\fancyhead[RE]{\nouppercase{\leftmark}}  % Chapter in the right on even pages
-\fancyhead[LO]{\nouppercase{\rightmark}} % Section in the left on odd pages
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Other setup
-\usepackage{lipsum}
 \usepackage{acronym}
 \usepackage{longtable}
 \usepackage{amsfonts}
 \newcommand{\angstrom}{\mbox{\normalfont\AA}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Spacing and indentation
+\usepackage{titlesec}
+\titlespacing{\section}{0pt}{\parskip}{-\parskip}
+\titlespacing{\subsection}{0pt}{\parskip}{-\parskip}
+\titlespacing{\subsubsection}{0pt}{\parskip}{-\parskip}
 \usepackage{setspace}
 \doublespacing
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyfoot{}
+\fancyhf{}
+\renewcommand{\chaptermark}[1]{\markboth{\MakeUppercase{\thechapter.\ #1}}{}} % Shorter chapter id
+\fancyhead[RE]{\nouppercase{\leftmark}}  % Chapter in the right on even pages
+\fancyhead[LO]{\nouppercase{\rightmark}} % Section in the left on odd pages
+
+%-------------------------------------------------------------------------------------------
 
 \begin{document}
 \pagenumbering{roman}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Title
 \input{misc/titlepage}
 \newpage\null\thispagestyle{empty}\newpage
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Abstract
+\chapter*{Abstract}
 \input{misc/abstract}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Dedication
 \input{misc/dedication}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Acknoledgments
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Acknowledgments
+\chapter*{Acknowledgments}
 \input{misc/acknowledgment}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Lisf of figures, tables, abbreviations, and contents
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Table of Contents (TOC)
+\pagestyle{plain}
 \tableofcontents
-\addtocontents{lof}{\protect\addcontentsline{toc}{chapter}{\listfigurename}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% TOC: figures
+\addtocontents{lof}{\protect\addcontentsline{toc}{chapter}{List of Figures}}
 \listoffigures
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% TOC: tables
 \listoftables
 \addcontentsline{toc}{chapter}{\listtablename}
-\input{misc/abbreviation}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% TOC: abbreviations
+\chapter*{List of Abbreviations}
 \addcontentsline{toc}{chapter}{List of Abbreviations}
+\input{misc/abbreviation}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Headers and footers
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ch1. Introduction
 \chapter{Introduction}
 \pagenumbering{arabic}
+\setlength{\parskip}{0em}
 \input{chapters/chapter1intro}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ch2. Project A
@@ -80,7 +95,8 @@
 \input{chapters/chapter5conclusions}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Bibliography
-\bibliography{misc/reference}{}
-\bibliographystyle{plain}
+\addcontentsline{toc}{chapter}{Bibliography}
+\bibliography{misc/bibliography}{}
+\bibliographystyle{unsrt} 
 
 \end{document}
